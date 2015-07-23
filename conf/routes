@@ -1,0 +1,22 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+POST       /recipes                 controllers.RecipeController.createRecipe()
+GET        /recipes                 controllers.RecipeController.getAllRecipe()
+GET        /recipes/:id             controllers.RecipeController.getOneRecipe(id:Integer)
+DELETE     /recipes/:id             controllers.RecipeController.deleteRecipe(id:Integer)
+
+POST       /ingredients             controllers.IngredientController.createIngredient()
+GET        /ingredients             controllers.IngredientController.getAllIngredient()
+
+POST       /instructions            controllers.InstruccionController.createStep()
+GET        /instructions            controllers.InstruccionController.getAllStep()
+
+

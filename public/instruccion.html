@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="foundation-5.5.2/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="foundation-5.5.2/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+    <script src="foundation-5.5.2/js/vendor/modernizr.js"></script>
+    <script src="foundation-5.5.2/js/vendor/jquery.js"></script>
+    <title></title>
+</head>
+<body onload="dashLoad()">
+<section>
+    <div>
+        <h1>Registro Instrucciones</h1>
+        <hr>
+        <form class="form" name="frm" accept-charset="UTF-8" id="insertForm">
+            <div class="row">
+                <div class="large-3 columns">
+                    <input type="number" min="1" max="100" name="paso" id="paso" placeholder="No. de paso" required/>
+                </div>
+                <div class="large-9 columns">
+                    <textarea name="paso_descripcion" id="paso_descripcion" placeholder="Descripción de paso" required></textarea>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="large-3 columns">
+                    <button id="saveStep" type="button" class="button expand round">Agregar</button>
+                </div>
+                <div class="large-9 columns">
+                    <button id="finishStep" type="button" class="button expand">Finalizar Receta</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</section>
+<script src="libs/jquery-1.11.3.min.js"></script>
+<script src="javascripts/postInstruccion.js"></script>
+<script src="javascripts/clear.js"></script>
+<script src="foundation-5.5.2/js/foundation/foundation.js"></script>
+<script src="foundation-5.5.2/js/foundation/foundation.alert.js"></script>
+</body>
+</html>
