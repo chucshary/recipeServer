@@ -1,10 +1,12 @@
 var $x = $('#save');
 var aux=false;
+var globalNombreImagen="";
+var globalBase64="";
 
 $x.click(function(evt) {
  aux= validation();
  console.log(aux);
-  if (aux)
+  if (aux&&globalBase64!="")
     {
         var formPost = document.getElementById('insertForm');
         var myObj = {};
@@ -21,6 +23,11 @@ $x.click(function(evt) {
                                    myObj[formPost[i].name] = formPost[i].value + " "+ formPost[i+1].value
                                  }
             }
+            if(i==formPost.length-1)
+                {
+                     myObj["nombreimagen"] = globalNombreImagen;
+                     myObj["base64"] = globalBase64;
+                }
          }
 
     console.log(myObj);
@@ -42,6 +49,10 @@ $x.click(function(evt) {
             console.log("An error ocurred");
             }
             });
+        }
+        else
+        {
+             alert("Seleccione una imagen.");
         }
 
 });
@@ -74,3 +85,53 @@ var campo = document.getElementById("insertForm");
             location.href="ingredientes.html";
         }
     }
+
+
+    function encodeImage(){
+        var files = event.target.files;
+        var photoFile = files[0];
+        console.log(photoFile);
+        var imagenReceta=photoFile.name;
+
+        console.log("NOMBRE   "+ imagenReceta);
+
+            var reader = new FileReader();
+            reader.onload = function(){
+            var dataURL = reader.result;
+            var output = document.getElementById('photo-preview');
+            output.src = dataURL;
+
+            var canvas = document.createElement('canvas');
+                  canvas.width = 100;
+                  canvas.height = 100;
+                    var img = new Image();
+                    img.src = dataURL;
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, 100, 100);
+
+                var extImg="";
+                var indice=0;
+                for (i = 0; i < dataURL.length; i++) {
+                    if(i>=11){
+                        if(dataURL.charAt(i) != ';'){
+                            extImg+= dataURL.charAt(i);
+                        }
+                        else{
+                            indice = i;
+                            break;
+                        }
+                    }
+                }
+                var finalFile = canvas.toDataURL("image/"+extImg);
+                var stringBase64 = dataURL.substring(indice+8);
+                var base64Small=finalFile.replace("data:image/"+extImg+";base64,", "");
+
+
+                globalNombreImagen=imagenReceta;
+                globalBase64=base64Small.toString();
+
+                 console.log("La extension es: "+extImg+" la cadena base64 de la img grande es "+stringBase64);
+                            console.log("La extension es: "+extImg+" la cadena base64 de la img pequeña es "+base64Small.toString());
+                    };
+        reader.readAsDataURL(photoFile);
+    };

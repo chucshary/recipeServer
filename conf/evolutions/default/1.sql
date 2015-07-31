@@ -20,6 +20,8 @@ create table recipe (
   categoria                 varchar(255),
   duracion                  varchar(255),
   porcion                   integer,
+  nombreimagen              varchar(255),
+  base64                    TEXT,
   constraint pk_recipe primary key (id))
 ;
 
