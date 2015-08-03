@@ -22,6 +22,7 @@ create table recipe (
   porcion                   integer,
   nombreimagen              varchar(255),
   base64                    TEXT,
+  url                       varchar(255),
   constraint pk_recipe primary key (id))
 ;
 

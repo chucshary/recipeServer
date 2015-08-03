@@ -18,6 +18,7 @@ public class Recipe extends Model {
     private String nombreimagen;
     @Column(columnDefinition = "TEXT")
     private String base64;
+    private  String url;
 
 
     public static Finder<Integer, Recipe> find =
@@ -85,5 +86,13 @@ public class Recipe extends Model {
 
     public void setBase64(String base64) {
         this.base64 = base64;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

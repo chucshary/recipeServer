@@ -27,6 +27,7 @@ $x.click(function(evt) {
                 {
                      myObj["nombreimagen"] = globalNombreImagen;
                      myObj["base64"] = globalBase64;
+                     myObj["url"] = "/assets/images/"+globalNombreImagen;
                 }
          }
 
